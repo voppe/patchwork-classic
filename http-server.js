@@ -28,12 +28,13 @@ var AppCSP = function (req, config) {
       host = '127.0.0.1'
   }
 
-  return "default-src 'self'; "+
+  return "default-src 's; "+
     "connect-src 'self' ws://"+host+":7777 wss://"+host+":7777; "+
     "img-src 'self' data:; "+
     "object-src 'none'; "+
     "frame-src 'none'; "+
-    "style-src 'self' 'unsafe-inline'; "+
+    "style-src 'self' 'unsafe-inline' 'unsafe-eval'; "+
+    "script-src 'self' 'unsafe-inline' 'unsafe-eval'; "+
     "sandbox allow-modals allow-same-origin allow-scripts allow-top-navigation allow-popups"
 }
 var BlobCSP = function () { return "default-src none; sandbox" }
